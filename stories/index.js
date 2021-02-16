@@ -21,14 +21,14 @@ storiesOf("DayListItem", module) //Initiates Storybook and registers our DayList
   ));
 
 storiesOf("Button", module)
-  .addParameters({
+  .addParameters({// Provides the default background color for our component
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   })
-  .add("Base", () => <Button>Base</Button>)
+  .add("Base", () => <Button>Base</Button>)// To define our stories, we call add() once for each of our test states to generate a story
   .add("Confirm", () => <Button confirm>Confirm</Button>)
   .add("Danger", () => <Button danger>Cancel</Button>)
   .add("Clickable", () => (
-    <Button onClick={action("button-clicked")}>Clickable</Button>
+    <Button onClick={action("button-clicked")}>Clickable</Button>// action() allows us to create a callback that appears in the actions panel when clicked
   ))
   .add("Disabled", () => (
     <Button disabled onClick={action("button-clicked")}>
