@@ -1,8 +1,7 @@
-import React from "react";
+import React, {Fragment} from "react";
 
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-
 import "index.scss";
 
 import Button from "components/Button";
@@ -18,6 +17,7 @@ import Confirm from 'components/Appointment/Confirm';
 import Status from 'components/Appointment/Status';
 import Error from 'components/Appointment/Error';
 import  Form from 'components/Appointment/Form';
+
 
 storiesOf("DayListItem", module) //Initiates Storybook and registers our DayListItem component
   .addParameters({
@@ -183,6 +183,16 @@ storiesOf("Button", module)
           .add("Appointment Empty", () => (
                 <Fragment>
                   <Appointment id={1} time="12pm" />
+                  <Appointment id="last" time="1pm" />
+                </Fragment>
+              ))
+              .add("Appointment Booked", () => (
+                <Fragment>
+                  <Appointment
+                    id={1}
+                    time="12pm"
+                    interview={{ student: "Lydia Miller-Jones", interviewer }}
+                  />
                   <Appointment id="last" time="1pm" />
                 </Fragment>
               ));
