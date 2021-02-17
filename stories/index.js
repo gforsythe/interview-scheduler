@@ -17,6 +17,7 @@ import Show from 'components/Appointment/Show';
 import Confirm from 'components/Appointment/Confirm';
 import Status from 'components/Appointment/Status';
 import Error from 'components/Appointment/Error';
+import  Form from 'components/Appointment/Form';
 
 storiesOf("DayListItem", module) //Initiates Storybook and registers our DayListItem component
   .addParameters({
@@ -166,4 +167,22 @@ storiesOf("Button", module)
             <Error
               message={"Could not delete appointment"}
               onClose={action("onClose")}
-            />);
+            />)
+            .add("Edit", () => 
+            <Form
+              name={"Gabe Forsythe"}
+              interviewers={interviewers}
+              interviewer={interviewer.id}
+              onSave={action("onSave")}
+              onCancel={action("onCancel")} />)
+          .add("Create", () => 
+            <Form
+              interviewers={interviewers}
+              onSave={action("onSave")}
+              onCancel={action("onCancel")} />)
+          .add("Appointment Empty", () => (
+                <Fragment>
+                  <Appointment id={1} time="12pm" />
+                  <Appointment id="last" time="1pm" />
+                </Fragment>
+              ));
