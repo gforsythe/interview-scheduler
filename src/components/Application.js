@@ -4,6 +4,7 @@ import axios from "axios";
 import "components/Application.scss";
 import DayList from "components/DayList";
 import Appointment from "components/Appointment";
+import {getAppointmentsForDay} from "helpers/selectors";
 
 
 // const appointments = [
@@ -59,21 +60,44 @@ export default function Application(props) {
     days: [],
     appointments: {}
   });
+  const dailyAppointments = [];
   const setDay = day => setState({ ...state, day });
-  const setDays = (days) => {
-    return  setState(prevState => ({ ...prevState, days }));
-    
-  };
+  // const setDays = (days) => {
+  //   return  setState(prevState => ({ ...prevState, days }));
+
+  // };
 
   useEffect(() => {
-    const url = "/api/days";
-    axios.get(url)
-      .then(function (response) {
-        // console.log("++++++look at me+++++", response.data);
-        setDays([...response.data]);
-      });
+
+    const daysURL = "/api/days";
+    const appointmentsURL = "/api/appointments";
+    const interviewersURL = "/api/interviewers";
+
+
+    Promise.all([
+      axios.get(daysURL),
+      axios.get(appointmentsURL),
+      axios.get(interviewersURL)
+
+    ]).then((all) => {
+      const days = all[0].data;
+      const appointments = all[1].data;
+      const interviewers = all[2].data;
+      console.log("this is ALLLLLLLL", all);
+      // set your states here with the correct values...
+
+      return setState(prev => ({ ...prev, days, appointments, interviewers }));
+
+    });
   }, []);
-    console.log("THIS IS STATE", state);
+  //   axios.get(url)
+  //     .then(function (response) {
+  //       // console.log("++++++look at me+++++", response.data);
+  //       setDays([...response.data]);
+  //     });
+  // }, []);
+    // console.log("THIS IS STATE", state);
+  const appointments = getAppointmentsForDay(state, state.day);
   const mappedAppointments = appointments.map((appointment) => {
     return (
       <Appointment
