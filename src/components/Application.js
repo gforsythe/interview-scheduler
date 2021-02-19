@@ -108,7 +108,7 @@ export default function Application(props) {
         {...appointment}
         id={appointment.id}
         time={appointment.time}
-        interview={appointment.interview}
+        interview={interview}
 
       />
     );
@@ -135,6 +135,7 @@ export default function Application(props) {
 
       <section className="schedule">
         {mappedAppointments}
+        
         <Appointment key="last" time="5pm"></Appointment>
       </section>
     </main>
