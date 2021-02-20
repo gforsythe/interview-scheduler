@@ -1,11 +1,13 @@
 const { useState } = require("react");
-
+                                //"EMPTY"
 const useVisualMode = function (inital) {
   //the stack is the call stack IE- Magic the gathering
   //history is the array of the modes
   //the end of the array is the most recent slide
   const [history, setHistory] = useState([inital]);
   //modes are like slide show
+  const mode = history.slice(-1)[0];
+  
   const transition = function (mode, replace = false) {
 
     setHistory(prevState => {
@@ -29,7 +31,7 @@ const useVisualMode = function (inital) {
       return newHistory;
     });
   };
-  const mode = history.slice(-1)[0];
+  
   return { mode, transition, back };
 };
 

@@ -7,52 +7,7 @@ import Appointment from "components/Appointment";
 import {getAppointmentsForDay, getInterview} from "helpers/selectors";
 
 
-// const appointments = [
-//   {
-//     id: 1,
-//     time: "12pm",
-//   },
-//   {
-//     id: 2,
-//     time: "1pm",
-//     interview: {
-//       student: "Lydia Miller-Jones",
-//       interviewer: {
-//         id: 1,
-//         name: "Sylvia Palmer",
-//         avatar: "https://i.imgur.com/LpaY82x.png",
-//       }
-//     }
-//   },
-//   {
-//     id: 3,
-//     time: "2pm",
-//     interview: {
-//       student: "Willow Chown",
-//       interviewer: {
-//         id: 2,
-//         name: "Tori Malcolm",
-//         avatar: "https://i.imgur.com/Nmx0Qxo.png",
-//       }
-//     }
-//   },
-//   {
-//     id: 8,
-//     time: "3pm",
-//   },
-//   {
-//     id: 4,
-//     time: "4pm",
-//     interview: {
-//       student: "Bianca Weima",
-//       interviewer: {
-//         id: 3,
-//         name: "Mildred Nazir",
-//         avatar: "https://i.imgur.com/T2WwVfS.png",
-//       }
-//     }
-//   }
-// ];
+
 
 export default function Application(props) {
   const [state, setState] = useState({
@@ -63,10 +18,7 @@ export default function Application(props) {
   });
   
   const setDay = day => setState({ ...state, day });
-  // const setDays = (days) => {
-  //   return  setState(prevState => ({ ...prevState, days }));
-
-  // };
+  
 
   useEffect(() => {
 
@@ -92,12 +44,7 @@ export default function Application(props) {
 
     });
   }, []);
-  //   axios.get(url)
-  //     .then(function (response) {
-  //       // console.log("++++++look at me+++++", response.data);
-  //       setDays([...response.data]);
-  //     });
-  // }, []);
+  
     // console.log("THIS IS STATE", state);
   const appointments = getAppointmentsForDay(state, state.day);
   const mappedAppointments = appointments.map((appointment) => {

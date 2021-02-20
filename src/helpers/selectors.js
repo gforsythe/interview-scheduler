@@ -12,6 +12,7 @@ export function getAppointmentsForDay(state, day) {
   // }
   // return appointmentArray;
 
+//refactored
   const foundDay = state.days.find((days) => days.name === day);
   if (state.days.length === 0 || foundDay === undefined) {
     return [];
@@ -24,11 +25,11 @@ export function getAppointmentsForDay(state, day) {
 
 
 export function getInterview(state, interview) {
-  // Otherwise, the function should return null.
+  //  the function should return null if no interview is there
   if (!interview) {
     return null;
   }
-  // the interview data when we pass it an object that contains 
+  // otherwise, the interview data when we pass it an object that contains 
   // the interviewer. 
   const interviewer = state.interviewers[interview.interviewer];
   return { ...interview, interviewer };
