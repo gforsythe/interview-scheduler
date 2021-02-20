@@ -38,3 +38,25 @@ export function getInterview(state, interview) {
 
 
 
+export function getInterviewersForDay(state, day) {
+
+
+//refactored
+  const foundDay = state.days.find((days) => days.name === day);
+  if (state.days.length === 0 || foundDay === undefined) {
+    return [];
+  }
+  return foundDay.interviewers.map((id) => state.interviewers[id]);
+
+}
+
+
+
+  //both work
+  // const foundDay = state.days.find((days) => days.name === day);
+  // const appointmentArray = [];
+
+  // if (state.appointments && foundDay) {
+  //   filteredDays.appointments.forEach((appointmentId) => appointmentArray.push(state.appointments[appointmentId]));
+  // }
+  // return appointmentArray;
