@@ -7,6 +7,7 @@ import useVisualMode from "hooks/useVisualMode";
 import Form from "components/Appointment/Form.js";
 import Status from "components/Appointment/Status.js";
 import Confirm from "components/Appointment/Confirm.js";
+import Error from "components/Appointment/Error.js";
 
 
 
@@ -18,6 +19,8 @@ const SAVING = "SAVING";
 const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
 const EDIT = "EDIT";
+const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_DELETE = "ERROR_DELETE";
 
 export default function Appointment(props) {
   //myhook
@@ -26,11 +29,16 @@ export default function Appointment(props) {
   );
 
   function delAppointment() {
+
     transition(DELETING);
-    props
-      .cancelInterview(props.id)
+
+    props.cancelInterview(props.id)
       .then(() => {
         transition(EMPTY);
+
+      })
+      .catch(() => {
+        transition(ERROR_DELETE, true);
       });
   };
 
@@ -51,14 +59,26 @@ export default function Appointment(props) {
 
     props.bookInterview(props.id, interview)
       .then(() => {
-
         transition(SHOW);
+      })
+      .catch(() => {
+        transition(ERROR_SAVE, true);
       });
 
   }
   return (
     <article className="appointment">
       <Header time={props.time} />
+      {mode === ERROR_DELETE &&
+        <Error
+          message="Whoospie Error on Deleting"
+          onClose={back}
+        />}
+      {mode === ERROR_SAVE &&
+        <Error
+          message="Whoopsie Error on Saving"
+          onClose={back}
+        />}
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SAVING && (
         <Status message="SAVING" />
