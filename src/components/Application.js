@@ -50,6 +50,27 @@ export default function Application(props) {
     });
   }, []);
 
+  function cancelInterview (id) {
+
+//use id to find right appointment slot and set interview => null
+
+    const appointment = {
+      ...state.appointments[id],
+      interview: null 
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    const url = `/api/appointments/${id}`;
+    return axios.delete(url)
+      .then(() => {
+        setState({...state, appointments});
+      });
+
+  }
+
   function bookInterview(id, interview) {
 
     const appointment = {
@@ -88,6 +109,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
 
       />
     );

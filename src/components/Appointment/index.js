@@ -14,6 +14,7 @@ const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
 const SAVING = "SAVING";
+const DELETING = "DELETING"
 
 export default function Appointment(props) {
   //myhook
@@ -21,12 +22,28 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  function cancel() {
+    transition(DELETING);
+    props
+      .cancelInterview(props.id)
+      .then(() => {
+        transition(EMPTY);
+      })
+  };
+
   function save(name, interviewer) {
     const interview = {
       student: name,
       interviewer
     };
-    
+
+  
+    //fixes bug when there is no interviewer selected or no name put in form and submission occurs
+    if(!interviewer || name.length === 0){
+      return console.log("whoopsie, something hapenned");
+      
+    }
+
     transition(SAVING);
     
     props.bookInterview(props.id, interview)
@@ -41,14 +58,15 @@ export default function Appointment(props) {
       <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE) } />}
       {mode === SAVING && (
-        <Status message={props.message}/>
+        <Status message="SAVING"/>
       )}
+      {mode === DELETING && <Status message="DELETING"/> }
       {mode === SHOW && (
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
           onEdit={props.onEdit}
-          onDelete={props.onDelete}
+          onDelete={cancel}
         />
       )}
       {mode === CREATE && (
