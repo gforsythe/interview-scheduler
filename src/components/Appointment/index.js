@@ -50,10 +50,12 @@ export default function Appointment(props) {
 
 
     //fixes bug when there is no interviewer selected or no name put in form and submission occurs
-    if (!interviewer || name.length === 0) {
-      return console.log("whoopsie, something hapenned");
+    // if (!interviewer || name.length === 0) {
+    //   return console.log("whoopsie, something hapenned");
 
-    }
+    // }
+
+    
 
     transition(SAVING);
 
