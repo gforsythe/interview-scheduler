@@ -27,7 +27,7 @@ export default function useApplicationData(props) {
       axios.get(interviewersURL)
 
     ]).then((all) => {
-      console.log("WHAT ARE YOU!!!!!!!!!!!!!", all);
+      // console.log("WHAT ARE YOU!!!!!!!!!!!!!", all);
 
       const days = all[0].data;
       const appointments = all[1].data;
