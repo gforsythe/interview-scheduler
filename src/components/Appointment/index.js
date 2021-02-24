@@ -83,16 +83,16 @@ export default function Appointment(props) {
         />}
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SAVING && (
-        <Status message="SAVING" />
+        <Status message="Saving"  />
       )}
       {mode === CONFIRM &&
         <Confirm
-          message={"Delete the appointment?"}
+          message={"Are you sure you would like to delete?"}
           onConfirm={delAppointment}
           onCancel={back}
         />}
 
-      {mode === DELETING && <Status message="DELETING" />}
+      {mode === DELETING && <Status message="Deleting" />}
       {mode === SHOW && (
         <Show
           student={props.interview.student}
