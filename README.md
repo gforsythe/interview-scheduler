@@ -2,6 +2,8 @@
 
 The Interview Scheduler allows a user to book and manage a student with a mentor. Appointments can be made from 12pm - 5pm for each day of the week.
 
+I built this application during my time at Lighthouse Labs while I was enrolled in the web development program.
+
 ## Final Product
 ```sh
 The Basic Layout
@@ -18,7 +20,22 @@ Booking An Appointment
 ```sh
 Delete An Appointment 
 ```
+!["Deleting-An-Appointment"](https://github.com/gforsythe/interview-scheduler/blob/master/docs/Delete%20An%20Appointment.png?raw=true)
 
+```sh
+Deleting Status
+```
+!["Deleting-Status"](https://github.com/gforsythe/interview-scheduler/blob/master/docs/Deleting%20Status.png?raw=true)
+
+```sh
+Saving Status
+```
+!["Saving-Satus"](https://github.com/gforsythe/interview-scheduler/blob/master/docs/Saving%20Status.png?raw=true)
+
+```sh
+Mobile Version
+```
+!["Mobile-Version"](https://github.com/gforsythe/interview-scheduler/blob/master/docs/Mobile%20Version.png?raw=true)
 
 ## Setup
 
