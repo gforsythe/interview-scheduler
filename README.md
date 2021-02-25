@@ -4,9 +4,20 @@ The Interview Scheduler allows a user to book and manage a student with a mentor
 
 ## Final Product
 ```sh
-The basic layout
+The Basic Layout
+```
+!["Basic-Layout"](https://github.com/gforsythe/interview-scheduler/blob/master/docs/Basic%20Layout.png?raw=true)
+
+
+```sh
+Booking An Appointment
 ```
 
+!["Booking-An-Appointment"](https://github.com/gforsythe/interview-scheduler/blob/master/docs/Booking%20An%20Appointment.png?raw=true)
+
+```sh
+Delete An Appointment 
+```
 
 
 ## Setup
@@ -30,3 +41,23 @@ npm test
 ```sh
 npm run storybook
 ```
+## Dependencies
+* Axios
+* Classnames
+* Normalize.css
+* React
+* React-dom
+* React-scripts
+* Babel/core
+* Storybook/addon-actions
+* Storybook/addon-backgrounds
+* Storybook/addon-links
+* Storybook/addons
+* Storybook/react
+* Testing-library/jest-dom
+* Testing-library/react
+* Testing-library/react-hooks
+* Babel-loader
+* Node-sass
+* Prop-types
+* React-test-renderer
